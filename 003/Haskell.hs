@@ -1,10 +1,4 @@
-
--- Sieve of Eratosthenes
-primes = sieve [2..]
-         where
-             sieve (x:xs) = x:sieve (filter ((/= 0).(`mod` x)) xs)
-
-primeFactors x = factors x primes
+import Data.Numbers.Primes
 
 factors 1 _                  = []
 factors m (p:ps) | r == 0    = p : factors q (p:ps)
@@ -13,4 +7,4 @@ factors m (p:ps) | r == 0    = p : factors q (p:ps)
                        (q, r) = quotRem m p
 
 main = do
-       print $ maximum $ primeFactors 600851475143
+       print $ maximum $ factors 600851475143 primes
