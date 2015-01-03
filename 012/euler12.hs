@@ -8,6 +8,6 @@ main = do
 -- | http://en.wikipedia.org/wiki/Divisor_function
 divisorsCount = product . map (+1) . map (length) . group . primeFactors
 
-triangles = scanl (+) 1 [2..]
+triangles = scanl1 (+) [1..]
 
 zipF f = zip <*> map f
